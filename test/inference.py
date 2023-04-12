@@ -32,7 +32,7 @@ def get_args():
     parser = argparse.ArgumentParser(description='StereoNet')
     parser.add_argument('--maxdisp', type=int ,default=128,
                         help='maxium disparity')
-    parser.add_argument('--datapath', default='/media/ip/data/caipuguang/dataset/zkhy_limit/images_011',
+    parser.add_argument('--datapath', default='./example/example_data',
                         help='datapath')
     parser.add_argument('--epochs', type=int, default=100,
                         help='number of epochs to train')
@@ -122,11 +122,9 @@ def test(args, model, TestImgLoader):
 def main():
     os.environ['CUDA_VISIBLE_DEVICES'] = '0'
     args = get_args()
-    args.checkpoint_path = "/home/caipuguang/code/weights/checkpoints4/checkpoint_sceneflow_956.tar"
-    # args.checkpoint_path = root_path + "/checkpoints5/checkpoint_sceneflow_558.tar"
-    # args.datapath = '/home/caipuguang/dataset/stereo/zkhy_limit/images_005'   # 27
-    args.datapath = '/home/caipuguang/dataset/stereo/flyingthings3d_format'  # 27
-    args.output_save_path = '/home/caipuguang/code/inference_output/'
+    args.checkpoint_path = "./checkpoints/checkpoint_sceneflow_956.tar"
+    args.datapath = './example/example_data'  # 27
+    args.output_save_path = './checkpoints/'
     torch.manual_seed(args.seed)
     if args.cuda:
         torch.cuda.manual_seed(args.seed)
